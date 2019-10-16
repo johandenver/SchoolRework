@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Bands In Town</title>
+</head>
+
+<body>
+
+  <!-- Artist Select Box -->
+  <form id="artist-form">
+
+    <!-- Label for Text Box -->
+    <label for="artist-input">Choose Your Artist</label>
+
+    <!-- Text Input Box -->
+    <input type="text" id="artist-input"><br>
+
+    <!-- Submit Button -->
+    <input id="select-artist" type="submit" value="GO!">
+  </form>
+
+  <!-- Artist Information -->
+  <div id="artist-div"></div>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  function searchBandsInTown(artist) {
+    // Add code to query the bands in town api searching for the artist received as an argument to this function
+    //var queryUrl = "https://app.swaggerhub.com/apis/Bandsintown/PublicAPI/3.0.0" + Artist + ""
+    //var artist = 
+    var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codingbootcamp";
+    
+
+    $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).then(function(response) {
+
+        console.log(response);
+        var artistDiv = $("<div class='bands'>");
+        
+        var name = response.name;
+
+        var pOne = $("<p>").text("Name: " + name);
+
+        artistDiv.append(pOne);
+
+        var imgUrl = response.thumb_url;
+        
+        var img = $("<img>").attr("src", imgUrl);
+
+        artistDiv.append(img);
+
+        var fans = response.tracker_count;
+
+        var pTwo = $("<p>").text(fans + " fans tracking this artist");
+
+        artistDiv.append(pTwo);
+
+        var events = response.upcoming_event_count;
+
+        var pThree = $("<p>").text(events + " upcoming events");
+
+        artistDiv.append(pThree);
+
+        var link = response.url;
+
+        var pFour = $("<a>").attr("href", link).text("See Tour Dates");
+
+        artistDiv.append(pFour);
+
+        $("#artist-div").prepend(artistDiv);
+
+      })
+      // can also do the above more condensed as one line of code for each itemm(name, picture, etc.)
+      
+    // Using jQuery, append the following to the #artist-div :
+
+    // The artist's name
+
+    
+    
+
+    // The artists thumbnail image
+    // The number of fans tracking this artist
+    // The number of upcoming events for this artist
+    // A link to the bandsintown url for this artist
+    // Note: Append actual HTML elements, not just text
+        }
+
+  // Event handler for user clicking the select-artist button
+  $("#select-artist").on("click", function(event) {
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
+    // Storing the artist name
+    var artist = $("#artist-input").val().trim();
+
+    // Running the searchBandsInTown function(passing in the artist as an argument)
+    searchBandsInTown(artist);
+  });
+</script>
+
+</html>
