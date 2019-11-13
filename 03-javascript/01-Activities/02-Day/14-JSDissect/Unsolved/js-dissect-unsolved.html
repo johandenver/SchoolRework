@@ -1,47 +1,48 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>
       Data Types, User Input, Conditional Logic - Uncommented
     </title>
   </head>
   <body>
     <script type="text/javascript">
-
+      // variables for the prompt and confirm questions
       var userName = prompt("What's your name?");
       var confirmCats = confirm("Do you like cats?");
 
+      // variablesw for the pet details
       var petName = "Meeses";
       var petType = "Tuxedo Cat";
       var petAge = 5;
       var petIsCat = true;
 
+      // if statement for if the user likes cats, and gives your pet details to them if so.
       if (confirmCats) {
         alert(petName + " " + petType + " " + petAge);
-      }
-      else {
+      } else {
         alert("You don't get my cat's information");
       }
 
+      // this will always show as it is true per the variable above.
       if (petIsCat) {
         alert("My pet is a cat");
-      }
-      else {
+      } else {
         alert("My pet is not a cat");
       }
 
+      // this will always run due to the age above:
       if (petAge !== 7) {
         alert("My pet is not 7 years old");
       }
 
+      // this is true due to the above variable:
       if (petAge === 5) {
         alert("My pet is 5 years old");
-      }
-      else if (petAge < 5) {
+      } else if (petAge < 5) {
         alert("My pet is less than 5 years old");
-      }
-      else {
+      } else {
         alert("My pet is older than 5 years old");
       }
 
@@ -54,8 +55,7 @@
       alert(catAge + 2);
 
       // Works as expected
-      alert(parseInt(catAge) + 2);
-
+      alert("your cat in two years will be " + (parseInt(catAge) + 2));
     </script>
   </body>
 </html>
