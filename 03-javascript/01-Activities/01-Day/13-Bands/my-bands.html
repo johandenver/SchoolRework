@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      const myBands = [
+        "beatles",
+        "rolling stones",
+        "vanilla ice",
+        "david bowie",
+        "miles davis"
+      ];
+
+      let bandQuestion = prompt("What is your favorite band? ");
+
+      let answer = bandQuestion.toLowerCase();
+      console.log(answer);
+      if (myBands.indexOf(answer) >= 0) {
+        alert("I love that band too! Yeah I love them!");
+      } else {
+        alert("I don't like them, lame of you to like them!");
+      }
+    </script>
+  </body>
+</html>
